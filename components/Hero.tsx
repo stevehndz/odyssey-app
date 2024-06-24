@@ -1,6 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import Button from "./Button";
+import Link from "next/link";
+
+// components
+import { Button } from "@/components/ui/button";
+
+// icons
+import { FaCirclePlay } from "react-icons/fa6";
 
 const Hero = () => {
   return (
@@ -8,14 +14,16 @@ const Hero = () => {
       <div className="hero-map"></div>
       {/* left */}
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
-        <Image
-          src="/camp.svg"
-          alt="camp"
-          width={50}
-          height={50}
-          className="absolute left-[-5px] top-[-30px] w-10 lg:w-[50px]"
-        />
-        <h1 className="bold-52 lg:border-88">Cerro Verde</h1>
+        <h1 className="bold-52 lg:bold-64 flex gap-3 items-center">
+          Cerro Verde{" "}
+          <Image
+            src="/camp.svg"
+            alt="camp"
+            width={50}
+            height={50}
+            className="w-10 lg:w-[60px]"
+          />
+        </h1>
         <p className="regular-16 mt-6 text-gray-30 xl:max-w-[520px]">
           Un volcán activo con senderos para caminatas que conducen a la cima
           para disfrutar de impresionantes vistas del cráter y el lago Ilopango.
@@ -48,13 +56,25 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col w-full gap-3 sm:flex-row">
-          <Button type="button" title="Descargar App" variant="btn_green" />
-          <Button
-            type="button"
-            title="¿Cómo funciona?"
-            icon="/play.svg"
-            variant="btn_white_text"
-          />
+          <Link href="/">
+            <Button
+              variant="default"
+              size="lg"
+              className="rounded-full w-full sm:w-auto bold-20 font-semibold bg-emerald-600"
+            >
+              Descargar App
+            </Button>
+          </Link>
+          <Link href="/">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="rounded-full w-full sm:w-auto gap-2 regular-20"
+            >
+              <FaCirclePlay className="w-5 h-5 text-emerald-600" />
+              ¿Cómo funciona?
+            </Button>
+          </Link>
         </div>
       </div>
 
