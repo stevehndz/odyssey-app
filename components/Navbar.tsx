@@ -16,7 +16,7 @@ const Navbar = () => {
         <Image src="/odyssey.svg" alt="logo" width={100} height={0} />
       </Link>
 
-      <ul className="hidden h-full gap-12 lg:flex">
+      <ul className="hidden h-full gap-8 lg:flex">
         {NAV_LINKS.map((link) => (
           <Link
             href={link.href}

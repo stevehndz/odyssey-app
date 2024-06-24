@@ -1,19 +1,49 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 // components
 import { Button } from "@/components/ui/button";
+import AnimatedInfo from "@/components/AnimatedInfo";
 
 // icons
 import { FaCirclePlay } from "react-icons/fa6";
 
 const Hero = () => {
   return (
-    <section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row">
+    <section className="max-container padding-container flex flex-col gap-12 py-10 pb-32 lg:py-20 xl:flex-row">
       <div className="hero-map"></div>
       {/* left */}
-      <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
+      <motion.div
+        variants={{
+          initial: {
+            opacity: 0,
+            y: 100,
+          },
+          animate: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.8,
+              ease: [0.4, 0, 0.2, 1],
+            },
+          },
+          exit: {
+            opacity: 0,
+            y: 100,
+            transition: {
+              duration: 0.5,
+              ease: [0.4, 0, 0.2, 1],
+            },
+          },
+        }}
+        initial="initial"
+        animate="animate"
+        className="relative z-20 flex flex-1 flex-col xl:w-1/2"
+      >
         <h1 className="bold-52 lg:bold-64 flex gap-3 items-center">
           Cerro Verde{" "}
           <Image
@@ -76,30 +106,11 @@ const Hero = () => {
             </Button>
           </Link>
         </div>
-      </div>
+      </motion.div>
 
       {/* right */}
       <div className="relative flex flex-1 items-start">
-        <div className="relative z-20 w-[268px] flex flex-col gap-8 rounded-3xl bg-green-90 px-7 py-8">
-          <div className="flex flex-col">
-            <div className="flexBetween">
-              <p className="regular-16 text-gray-20">Ubicación</p>
-              <Image src="/close.svg" alt="close" width={24} height={24} />
-            </div>
-            <p className="bold-20 text-white">Apaneca</p>
-          </div>
-
-          <div className="flexBetween">
-            <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Distancia</p>
-              <p className="bold-20 text-white">110 km</p>
-            </div>
-            <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Elevación</p>
-              <p className="bold-20 text-white">2030 m</p>
-            </div>
-          </div>
-        </div>
+        <AnimatedInfo />
       </div>
     </section>
   );
